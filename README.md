@@ -21,11 +21,11 @@ Optimización de la captura, trazabilidad y almacenamiento local offline de soli
 * **Vista Detallada:** Previsualización ampliada de evidencias e integración con visores del sistema mediante Intent.
 
 ## Planificación y Colaboración
-* Tablero Kanban en Trello: [Pegar enlace público del tablero]
+* Tablero Kanban en Trello: (https://trello.com/invite/b/6ad6553165e85e01c7f5e895/ATTId9827e2648e19653d39714fa2c450786E4ACF28C/control)
 * Historial de commits técnicos distribuidos entre ambos integrantes.
 
 ## Instrucciones para Ejecutar
-1. Clonar el repositorio: `git clone https://github.com/[usuario]/[repositorio].git`
+1. Clonar el repositorio: `git clone https://github.com/JorgeGuzman-32/AppVentas-Postventa.git`
 2. Abrir la carpeta raíz en Android Studio.
 3. Sincronizar Gradle (`Sync Project with Gradle Files`).
 4. Seleccionar un emulador con API 26 o superior (o dispositivo físico).
