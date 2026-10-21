@@ -104,7 +104,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Botón Ingresar con lógica de negocio local
+        // Botón Ingresar con lógica de negocio local xd
         Button(
             onClick = {
                 // 1. Validar campos vacíos
