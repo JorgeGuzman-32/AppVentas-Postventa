@@ -54,6 +54,13 @@ fun SolicitudFormScreen(
     val context = LocalContext.current
     var mostrarDialogoOrigen by remember { mutableStateOf(false) }
 
+    var categoriaExpandida by remember { mutableStateOf(false) }
+    val opcionesCategoria = listOf("Garantía", "Devolución", "Cambio")
+
+    var servicioExpandido by remember { mutableStateOf(false) }
+    val opcionesServicio = listOf("Retiro a domicilio", "En tienda")
+
+
     LaunchedEffect(state.guardadoExitosamente) {
         if (state.guardadoExitosamente) {
             viewModel.resetGuardado()
@@ -165,44 +172,76 @@ fun SolicitudFormScreen(
                 minLines = 3,
                 modifier = Modifier.fillMaxWidth()
             )
+            // Categoría Desplegable
+            ExposedDropdownMenuBox(
+                expanded = categoriaExpandida,
+                onExpandedChange = { categoriaExpandida = !categoriaExpandida }
+            ) {
+                OutlinedTextField(
+                    value = state.categoria,
+                    onValueChange = {}, // Se deja vacío porque se maneja por selección
+                    readOnly = true,    // Bloquea el teclado físico para forzar la selección
+                    label = { Text("Categoría") },
+                    isError = state.categoriaError != null,
+                    trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = categoriaExpandida) },
+                    supportingText = {
+                        AnimatedVisibility(visible = state.categoriaError != null, enter = fadeIn() + expandVertically()) {
+                            Text(text = state.categoriaError ?: "", color = MaterialTheme.colorScheme.error)
+                        }
+                    },
+                    modifier = Modifier.fillMaxWidth().menuAnchor()
+                )
+                ExposedDropdownMenu(
+                    expanded = categoriaExpandida,
+                    onDismissRequest = { categoriaExpandida = false }
+                ) {
+                    opcionesCategoria.forEach { opcion ->
+                        DropdownMenuItem(
+                            text = { Text(opcion) },
+                            onClick = {
+                                viewModel.onCategoriaChanged(opcion)
+                                categoriaExpandida = false
+                            }
+                        )
+                    }
+                }
+            }
 
-            // Categoría
-            OutlinedTextField(
-                value = state.categoria,
-                onValueChange = { viewModel.onCategoriaChanged(it) },
-                label = { Text("Categoría (Garantía, Devolución, Cambio)") },
-                isError = state.categoriaError != null,
-                trailingIcon = {
-                    if (state.categoriaError != null) {
-                        Icon(Icons.Default.Info, contentDescription = "Error", tint = MaterialTheme.colorScheme.error)
+            // Servicio Desplegable
+            ExposedDropdownMenuBox(
+                expanded = servicioExpandido,
+                onExpandedChange = { servicioExpandido = !servicioExpandido }
+            ) {
+                OutlinedTextField(
+                    value = state.servicio,
+                    onValueChange = {},
+                    readOnly = true,
+                    label = { Text("Servicio") },
+                    isError = state.servicioError != null,
+                    trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = servicioExpandido) },
+                    supportingText = {
+                        AnimatedVisibility(visible = state.servicioError != null, enter = fadeIn() + expandVertically()) {
+                            Text(text = state.servicioError ?: "", color = MaterialTheme.colorScheme.error)
+                        }
+                    },
+                    modifier = Modifier.fillMaxWidth().menuAnchor()
+                )
+                ExposedDropdownMenu(
+                    expanded = servicioExpandido,
+                    onDismissRequest = { servicioExpandido = false }
+                ) {
+                    opcionesServicio.forEach { opcion ->
+                        DropdownMenuItem(
+                            text = { Text(opcion) },
+                            onClick = {
+                                viewModel.onServicioChanged(opcion)
+                                servicioExpandido = false
+                            }
+                        )
                     }
-                },
-                supportingText = {
-                    AnimatedVisibility(visible = state.categoriaError != null, enter = fadeIn() + expandVertically()) {
-                        Text(text = state.categoriaError ?: "", color = MaterialTheme.colorScheme.error)
-                    }
-                },
-                modifier = Modifier.fillMaxWidth()
-            )
+                }
+            }
 
-            // Servicio
-            OutlinedTextField(
-                value = state.servicio,
-                onValueChange = { viewModel.onServicioChanged(it) },
-                label = { Text("Servicio (Retiro a domicilio, En tienda)") },
-                isError = state.servicioError != null,
-                trailingIcon = {
-                    if (state.servicioError != null) {
-                        Icon(Icons.Default.Info, contentDescription = "Error", tint = MaterialTheme.colorScheme.error)
-                    }
-                },
-                supportingText = {
-                    AnimatedVisibility(visible = state.servicioError != null, enter = fadeIn() + expandVertically()) {
-                        Text(text = state.servicioError ?: "", color = MaterialTheme.colorScheme.error)
-                    }
-                },
-                modifier = Modifier.fillMaxWidth()
-            )
 
             // Sección de Evidencias Fotográficas
             Row(
