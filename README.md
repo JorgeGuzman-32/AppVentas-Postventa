@@ -2,31 +2,34 @@
 
 Aplicación móvil desarrollada en Android Studio con Jetpack Compose, arquitectura MVVM y persistencia local mediante Room Database para la Evaluación Parcial 2.
 
-## Integrantes del Equipo
-* **Estudiante 1:** [Jorge Guzman] - GitHub: [usuario1]
-* **Estudiante 2:** [Francisco Ordenes] - GitHub: [usuario2]
+## 👥 Integrantes del Equipo
+* **Estudiante 1:** Jorge Guzmán - GitHub: `JorgeGuzman-32`
+* **Estudiante 2:** Francisco Órdenes - GitHub: `Cisco-fbn`
 
-## Problemática Resuelta
+---
+
+## 📋 Problemática Resuelta
 Optimización de la captura, trazabilidad y almacenamiento local offline de solicitudes de postventa, garantías y reclamos para retail.
 
-## Características Técnicas Implementadas
-* **Interfaz de Usuario:** Jetpack Compose con Material Design 3 y navegación desacoplada.
-* **Formularios con Validación:** Validación reactiva por campo (`isError`, `supportingText`, íconos de alerta) gestionada en ViewModel.
-* **Gestión de Estado:** Manejo inmutable con `UiState` y `StateFlow`.
-* **Persistencia Local Real:** SQLite estructurado con Room Database (`@Entity`, `@Dao`, `AppDatabase`).
-* **Recursos Nativos:**
-    1. *Cámara y Galería:* Captura directa y selección múltiple de fotos para evidencia de fallas.
-    2. *Vibración Háptica (`Vibrator`):* Retroalimentación física ante error de validación o guardado exitoso.
-* **Animaciones:** Transición fluida en lista (`slideInVertically` + `fadeIn`) y despliegue animado de mensajes de error (`expandVertically`).
-* **Vista Detallada:** Previsualización ampliada de evidencias e integración con visores del sistema mediante Intent.
+---
 
-## Planificación y Colaboración
-* Tablero Kanban en Trello: (https://trello.com/invite/b/6ad6553165e85e01c7f5e895/ATTId9827e2648e19653d39714fa2c450786E4ACF28C/control)
-* Historial de commits técnicos distribuidos entre ambos integrantes.
+## 🛠️ Características Técnicas Implementadas
 
-## Instrucciones para Ejecutar
-1. Clonar el repositorio: `git clone https://github.com/JorgeGuzman-32/AppVentas-Postventa.git`
-2. Abrir la carpeta raíz en Android Studio.
-3. Sincronizar Gradle (`Sync Project with Gradle Files`).
-4. Seleccionar un emulador con API 26 o superior (o dispositivo físico).
-5. Compilar y ejecutar (`Run 'app'`).
+* **Interfaz y Navegación (IE 2.1.1):** Flujo con `NavHost` (`LoginScreen` ➔ `MenuScreen` ➔ `ListaSolicitudesScreen` ➔ `SolicitudFormScreen` ➔ `SolicitudDetalleScreen`) bajo Material Design 3.
+* **Formularios Reactivos (IE 2.1.2):** Validación en campos y feedback visual con `isError`.
+* **Arquitectura MVVM (IE 2.2.1):** Lógica en `SolicitudViewModel.kt` y estado inmutable con `StateFlow`.
+* **Animaciones (IE 2.2.2):** Transiciones y visibilidad animada en listas y errores.
+* **Persistencia Local (IE 2.3.1):** Base de datos SQLite con Room y manejo de evidencias múltiples.
+* **Recursos Nativos (IE 2.4.1):** Integración de cámara/galería y vibración háptica.
+
+---
+
+## 📊 Planificación y Colaboración (IE 2.3.2)
+* **Tablero Kanban:** [Enlace a Trello](https://trello.com)
+* **Control de Versiones:** Historial de commits técnicos distribuidos.
+
+---
+
+## 🚀 Instrucciones Rápidas
+1. Clonar: `git clone https://github.com`
+2. Abrir en Android Studio, sincronizar Gradle y ejecutar en dispositivo o emulador API 26+.

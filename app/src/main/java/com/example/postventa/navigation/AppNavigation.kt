@@ -6,6 +6,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.postventa.ui.LoginScreen
+import com.example.postventa.ui.MenuScreen
 import com.example.postventa.ui.solicitud.ListaSolicitudesScreen
 import com.example.postventa.ui.solicitud.SolicitudDetalleScreen
 import com.example.postventa.ui.solicitud.SolicitudFormScreen
@@ -15,7 +17,26 @@ import com.example.postventa.ui.solicitud.SolicitudViewModel
 fun AppNavigation(viewModel: SolicitudViewModel) {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "lista_solicitudes") {
+
+    NavHost(navController = navController, startDestination = "login") {
+
+        // 1. Pantalla de Login requerida
+        composable("login") {
+            LoginScreen(onLoginSuccess = {
+                navController.navigate("menu") {
+                    popUpTo("login") { inclusive = true }
+                }
+            })
+        }
+
+        // 2. Pantalla de Menú requerida
+        composable("menu") {
+            MenuScreen(onNavigateToSolicitudes = {
+                navController.navigate("lista_solicitudes")
+            })
+        }
+
+        // 3. Pantalla de lista (Adaptada al flujo)
         composable("lista_solicitudes") {
             ListaSolicitudesScreen(
                 viewModel = viewModel,
@@ -23,12 +44,16 @@ fun AppNavigation(viewModel: SolicitudViewModel) {
                 onSolicitudClick = { id -> navController.navigate("detalle_solicitud/$id") }
             )
         }
+
+        // 4. Pantalla de Formulario
         composable("formulario_solicitud") {
             SolicitudFormScreen(
                 viewModel = viewModel,
                 onNavigateBack = { navController.popBackStack() }
             )
         }
+
+        // 5. Pantalla de Detalle conservada intacta
         composable(
             route = "detalle_solicitud/{id}",
             arguments = listOf(navArgument("id") { type = NavType.IntType })
