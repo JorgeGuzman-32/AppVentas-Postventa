@@ -121,7 +121,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
                 if (usuario == "admin" && contrasena == "duoc2026") {
                     onLoginSuccess()
                 } else {
-                    loginGeneralError = "Usuario o contraseña incorrectos. Intente con admin / duoc2026"
+                    loginGeneralError = "Usuario o contraseña incorrectos"
                 }
             },
             modifier = Modifier.fillMaxWidth()

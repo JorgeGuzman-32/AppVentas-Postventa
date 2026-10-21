@@ -31,9 +31,14 @@ fun AppNavigation(viewModel: SolicitudViewModel) {
 
         // 2. Pantalla de Menú requerida
         composable("menu") {
-            MenuScreen(onNavigateToSolicitudes = {
-                navController.navigate("lista_solicitudes")
-            })
+            MenuScreen(
+                onNavigateToSolicitudes = {
+                    navController.navigate("lista_solicitudes")
+                },
+                onNavigateBack = {
+                    navController.popBackStack()
+                }
+            )
         }
 
         // 3. Pantalla de lista (Adaptada al flujo)
@@ -41,7 +46,8 @@ fun AppNavigation(viewModel: SolicitudViewModel) {
             ListaSolicitudesScreen(
                 viewModel = viewModel,
                 onNuevaSolicitudClick = { navController.navigate("formulario_solicitud") },
-                onSolicitudClick = { id -> navController.navigate("detalle_solicitud/$id") }
+                onSolicitudClick = { id -> navController.navigate("detalle_solicitud/$id") },
+                onNavigateBack = { navController.popBackStack() }
             )
         }
 

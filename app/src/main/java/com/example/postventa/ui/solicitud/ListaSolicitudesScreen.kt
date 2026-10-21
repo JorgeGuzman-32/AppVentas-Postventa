@@ -20,13 +20,15 @@ import com.example.postventa.data.local.SolicitudEntity
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ListaSolicitudesScreen(
     viewModel: SolicitudViewModel,
     onNuevaSolicitudClick: () -> Unit,
-    onSolicitudClick: (Int) -> Unit
+    onSolicitudClick: (Int) -> Unit,
+    onNavigateBack: (() -> Unit)? = null
 ) {
     val lista: List<SolicitudEntity> by viewModel.listaSolicitudes.collectAsState()
 
@@ -34,6 +36,16 @@ fun ListaSolicitudesScreen(
         topBar = {
             TopAppBar(
                 title = { Text("Reclamos y Postventa") },
+                navigationIcon = {
+                    if (onNavigateBack != null) {
+                        IconButton(onClick = onNavigateBack) {
+                            Icon(
+                                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                                contentDescription = "Regresar"
+                            )
+                        }
+                    }
+                },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer
                 )
