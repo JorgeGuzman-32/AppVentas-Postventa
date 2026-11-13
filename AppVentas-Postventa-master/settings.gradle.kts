@@ -22,5 +22,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "AppVentas"
+rootProject.name = "Gestión móvil y seguimiento de solicitudes de clientes"
 include(":app")

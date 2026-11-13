@@ -73,16 +73,24 @@ fun LoginScreen(
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(
-            text = "PostVenta y Reclamos",
-            style = MaterialTheme.typography.headlineLarge,
+            text = "Gestión Móvil y Seguimiento",
+            style = MaterialTheme.typography.headlineMedium,
+            color = MaterialTheme.colorScheme.primary
+        )
+
+        Spacer(modifier = Modifier.height(4.dp))
+
+        Text(
+            text = "de Solicitudes de Clientes",
+            style = MaterialTheme.typography.titleLarge,
             color = MaterialTheme.colorScheme.primary
         )
 
         Spacer(modifier = Modifier.height(6.dp))
 
         Text(
-            text = "Gestión Móvil y Autenticación",
-            style = MaterialTheme.typography.titleMedium,
+            text = "PostVenta, Garantías y Reclamos",
+            style = MaterialTheme.typography.bodyLarge,
             color = MaterialTheme.colorScheme.secondary
         )
 

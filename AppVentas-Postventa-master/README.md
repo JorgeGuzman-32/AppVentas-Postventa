@@ -1,6 +1,6 @@
-# App de Gestión de Postventa y Reclamos (DSY1105)
+# Gestión Móvil y Seguimiento de Solicitudes de Clientes (DSY1105)
 
-Aplicación móvil desarrollada en Android Studio con Jetpack Compose, arquitectura MVVM y persistencia local mediante Room Database para la Evaluación Parcial 2.
+Aplicación móvil desarrollada en Android Studio con Jetpack Compose, arquitectura MVVM y persistencia local mediante Room Database.
 
 ## 👥 Integrantes del Equipo
 * **Estudiante 1:** Jorge Guzmán - GitHub: `JorgeGuzman-32`
